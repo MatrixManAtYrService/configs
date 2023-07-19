@@ -31,6 +31,7 @@
         extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
         modules = [ 
          ./home-manager/home.nix 
+         ./home-manager/gui.nix 
          ./vorpal/dconf.nix 
         ];
       };

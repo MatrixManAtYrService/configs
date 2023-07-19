@@ -1,28 +1,7 @@
 { inputs, lib, config, pkgs, ... }: {
-  imports = [
-    # If you want to use home-manager modules from other flakes (such as nix-colors):
-    # inputs.nix-colors.homeManagerModule
-
-    # You can also split up your configuration and import pieces of it here:
-    # ./nvim.nix
-  ];
 
   nixpkgs = {
-    # You can add overlays here
-    overlays = [
-      # If you want to use overlays exported from other flakes:
-      # neovim-nightly-overlay.overlays.default
-
-      # Or define it inline, for example:
-      # (final: prev: {
-      #   hi = final.hello.overrideAttrs (oldAttrs: {
-      #     patches = [ ./change-hello-to-hi.patch ];
-      #   });
-      # })
-    ];
-    # Configure your nixpkgs instance
     config = {
-      # Disable if you don't want unfree packages
       allowUnfree = true;
       # Workaround for https://github.com/nix-community/home-manager/issues/2942
       allowUnfreePredicate = (_: true);
@@ -35,13 +14,72 @@
     username = "matt";
     homeDirectory = "/home/matt";
     packages = [
-      helix
+      silver-searcher
       jq
       gron
+      nil
+      nim
+      nodePackages_latest.bash-language-server
+      nodePackages_latest.yaml-language-server
+      wget
+      tree
     ];
+    file = {
+        ".ipython/profile_default/ipython_config.py".text = ''
+           c.TerminalInteractiveShell.editing_mode = 'vi'
+       '';
+      };
+
   };
 
   programs.home-manager.enable = true;
+  programs.direnv.enable = true;
+  programs.direnv.nix-direnv.enable = true;
+
+  programs.helix = {
+    enable = true;
+    settings = {
+      theme = "tokyonight_storm";
+      editor = {
+        line-number = "relative";
+        mouse = false;
+        bufferline = "multiple";
+        cursor-shape.insert = "bar";
+      };
+      keys = {
+          normal = {
+            esc = ["collapse_selection" "keep_primary_selection"];
+          };
+      };
+    };
+  };
+
+  programs.zsh = {
+    enable = true;
+    defaultKeymap = "viins";
+    plugins = [
+      {
+        name = "today";
+        src = ./zsh_functions;
+        file = "today.zsh";
+      }
+      {
+        name = "vi-zle";
+        src = ./zsh_functions;
+        file = "vi_zle.zsh";
+      }
+      {
+       name = "pure";
+        src = pkgs.fetchFromGitHub {
+        owner = "sindresorhus";
+      	repo = "pure";
+      	rev  = "v1.20.1";
+      	sha256 = "1bxg5i3a0dm5ifj67ari684p89bcr1kjjh6d5gm46yxyiz9f5qla";
+        };
+      }
+    ];
+  };
+
   programs.git = {
     enable = true;
     userName = "Matt Rixman";
@@ -53,6 +91,11 @@
     };
   };
 
-  # Nicely reload system units when changing configs
+  programs.fzf = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
+  
   systemd.user.startServices = "sd-switch";
 }

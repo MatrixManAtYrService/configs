@@ -93,7 +93,9 @@
       firefox
     #  thunderbird
     ];
+    shell = pkgs.zsh;
   };
+  programs.zsh.enable = true;
 
   # use flakes
   nix = {

@@ -13,6 +13,12 @@ with lib.hm.gvariant;
       migrated-config = true;
     };
 
+    "org/gnome/calendar" = {
+      active-view = "month";
+      window-maximized = true;
+      window-size = mkTuple [ 768 600 ];
+    };
+
     "org/gnome/cheese" = {
       burst-delay = 1000;
       camera = "0809 (V4L2)";
@@ -23,7 +29,7 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/control-center" = {
-      last-panel = "mouse";
+      last-panel = "keyboard";
       window-state = mkTuple [ 980 640 ];
     };
 
@@ -54,16 +60,25 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/desktop/notifications" = {
-      application-children = [ "gnome-network-panel" ];
+      application-children = [ "gnome-network-panel" "org-gnome-console" ];
       show-banners = true;
+    };
+
+    "org/gnome/desktop/notifications/application/firefox" = {
+      application-id = "firefox.desktop";
     };
 
     "org/gnome/desktop/notifications/application/gnome-network-panel" = {
       application-id = "gnome-network-panel.desktop";
     };
 
+    "org/gnome/desktop/notifications/application/org-gnome-console" = {
+      application-id = "org.gnome.Console.desktop";
+    };
+
     "org/gnome/desktop/peripherals/mouse" = {
-      speed = 0.6976744186046511;
+      natural-scroll = false;
+      speed = 0.697674;
     };
 
     "org/gnome/desktop/peripherals/touchpad" = {
@@ -76,12 +91,38 @@ with lib.hm.gvariant;
       idle-delay = mkUint32 600;
     };
 
+    "org/gnome/desktop/sound" = {
+      event-sounds = false;
+      theme-name = "__custom";
+    };
+
+    "org/gnome/desktop/wm/keybindings" = {
+      switch-applications = [];
+      switch-applications-backward = [];
+      switch-windows = [ "<Alt>Tab" ];
+      switch-windows-backward = [ "<Shift><Alt>Tab" ];
+    };
+
+    "org/gnome/epiphany" = {
+      ask-for-default = false;
+    };
+
+    "org/gnome/epiphany/state" = {
+      is-maximized = false;
+      window-size = mkTuple [ 1024 768 ];
+    };
+
     "org/gnome/evolution-data-server" = {
       migrated = true;
     };
 
     "org/gnome/nautilus/preferences" = {
       migrated-gtk-settings = true;
+    };
+
+    "org/gnome/nm-applet/eap/dce3abdc-ed7b-4a74-81c7-625538a08dfb" = {
+      ignore-ca-cert = false;
+      ignore-phase2-ca-cert = false;
     };
 
     "org/gnome/settings-daemon/plugins/power" = {
