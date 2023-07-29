@@ -33,6 +33,7 @@
          ./home-manager/home.nix 
          ./home-manager/gui.nix 
          ./vorpal/dconf.nix 
+         ./vorpal/dconf-mod.nix
         ];
       };
     };
