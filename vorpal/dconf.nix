@@ -33,6 +33,10 @@ with lib.hm.gvariant;
       window-state = mkTuple [ 980 640 ];
     };
 
+    "org/gnome/desktop/a11y/magnifier" = {
+      mag-factor = 1.0;
+    };
+
     "org/gnome/desktop/app-folders" = {
       folder-children = [ "Utilities" "YaST" ];
     };
@@ -76,6 +80,10 @@ with lib.hm.gvariant;
       application-id = "org.gnome.Console.desktop";
     };
 
+    "org/gnome/desktop/notifications/application/org-gnome-geary" = {
+      application-id = "org.gnome.Geary.desktop";
+    };
+
     "org/gnome/desktop/peripherals/mouse" = {
       natural-scroll = false;
       speed = 0.697674;
@@ -97,10 +105,17 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/desktop/wm/keybindings" = {
+      maximize = [ "<Super>k" ];
+      minimize = [];
+      move-to-workspace-left = [ "<Super>y" ];
+      move-to-workspace-right = [ "<Super>o" ];
       switch-applications = [];
       switch-applications-backward = [];
+      switch-to-workspace-left = [ "<Super>n" ];
+      switch-to-workspace-right = [ "<Super>period" ];
       switch-windows = [ "<Alt>Tab" ];
       switch-windows-backward = [ "<Shift><Alt>Tab" ];
+      unmaximize = [ "<Super>j" ];
     };
 
     "org/gnome/epiphany" = {
@@ -116,6 +131,11 @@ with lib.hm.gvariant;
       migrated = true;
     };
 
+    "org/gnome/mutter/keybindings" = {
+      toggle-tiled-left = [ "<Super>h" ];
+      toggle-tiled-right = [ "<Super>l" ];
+    };
+
     "org/gnome/nautilus/preferences" = {
       migrated-gtk-settings = true;
     };
@@ -123,6 +143,10 @@ with lib.hm.gvariant;
     "org/gnome/nm-applet/eap/dce3abdc-ed7b-4a74-81c7-625538a08dfb" = {
       ignore-ca-cert = false;
       ignore-phase2-ca-cert = false;
+    };
+
+    "org/gnome/settings-daemon/plugins/media-keys" = {
+      screensaver = [];
     };
 
     "org/gnome/settings-daemon/plugins/power" = {
@@ -136,6 +160,11 @@ with lib.hm.gvariant;
     "org/gnome/shell" = {
       last-selected-power-profile = "power-saver";
       welcome-dialog-last-shown-version = "44.2";
+    };
+
+    "org/gnome/shell/keybindings" = {
+      focus-active-notification = [];
+      toggle-message-tray = [];
     };
 
     "org/gnome/shell/world-clocks" = {

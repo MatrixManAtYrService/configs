@@ -23,6 +23,7 @@
       nodePackages_latest.yaml-language-server
       wget
       tree
+      wally-cli
     ];
     file = {
         ".ipython/profile_default/ipython_config.py".text = ''
@@ -49,6 +50,8 @@
       keys = {
           normal = {
             esc = ["collapse_selection" "keep_primary_selection"];
+            "C-j" = ["extend_to_line_bounds" "delete_selection" "paste_after"]; 
+            "C-k" = ["extend_to_line_bounds" "delete_selection" "move_line_up" "paste_before"]; 
           };
       };
     };
