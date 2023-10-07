@@ -1,7 +1,9 @@
 { inputs, lib, config, pkgs, ... }: {
 
   home.packages = with pkgs; [
+      xclip
       wezterm
+      keyd
     ];
   home.file = {
     ".config/wezterm/wezterm.lua".text = ''
@@ -15,7 +17,7 @@
       config = wezterm.config_builder()
     end
 
-    config.color_scheme = 'Bamboo'
+    config.color_scheme = 'Monokai (base16)'
     config.hide_mouse_cursor_when_typing = false
 
     config.keys = {

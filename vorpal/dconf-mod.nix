@@ -19,5 +19,9 @@
       move-to-workspace-left = [ "<Super>Up" ];
       move-to-workspace-right = [ "<Super>Down" ];
     };
+    "org/gnome/mutter/keybindings" = {
+      toggle-tiled-left = [ "<Super>h" ];
+      toggle-tiled-right = [ "<Super>l" ];
+    };
   };
 }

@@ -51,6 +51,8 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
+  services.openssh.enable = true;
+
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
@@ -84,11 +86,13 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
+  users.groups.keyd = {};
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.matt = {
     isNormalUser = true;
     description = "matt";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "keyd" "docker"];
     packages = with pkgs; [
       firefox
     #  thunderbird
@@ -115,6 +119,24 @@
   #  wget
     dconf2nix
   ];
+
+  systemd.services = {
+    keyd = {
+      enable = true;
+      description = "keyd key remapping daemon";
+      unitConfig = {
+        Requires = "local-fs.target";
+        After = "local-fs.target";
+      };
+      script = ''
+      keyd
+      '';
+    };
+  };
+
+  environment.etc."keyd/default.conf".text = builtins.readFile ./keymaps.conf;
+
+  virtualisation.docker.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
