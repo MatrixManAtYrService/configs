@@ -37,6 +37,10 @@
         source = bin/today;
         target = ".bin/today";
       };
+      "starship-config" = {
+        source = ./config/starship.toml;
+        target = ".config/starship.toml";
+      };
       "nushell-confg" = {
         source = ./config/nushell;
         recursive = true;
@@ -46,11 +50,23 @@
   };
 
   programs = {
+
     home-manager.enable = true;
+
     nushell = {
       enable = true;
       configFile.source = ./config/nushell/config.nu;
       envFile.source = ./config/nushell/env.nu;
+    };
+
+    carapace = {
+      enable = true;
+      enableNushellIntegration = true;
+    };
+
+    starship = {
+      enable = true;
+      enableNushellIntegration = true;
     };
 
     git = {
