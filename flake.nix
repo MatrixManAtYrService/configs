@@ -1,11 +1,9 @@
 { description = "Your new nix config";
 
   inputs = {
-    # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-
-    # Home manager
-    home-manager.url = "github:nix-community/home-manager/release-23.05"; home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager.url = "github:nix-community/home-manager/master"; home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    helix.url = "github:helix-editor/helix?ref=23.10";
   };
 
   outputs = { nixpkgs, home-manager, ... }@inputs: {
@@ -14,6 +12,10 @@
       vorpal = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [ ./vorpal/configuration.nix ];
+      };
+      choedankal = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs; };
+        modules = [ ./choedankal/configuration.nix ];
       };
       wsl = nixpkgs.lib.nixosSystem { 
         specialArgs = { inherit inputs; };
@@ -32,6 +34,17 @@
           ./home-manager/gui.nix
           ./vorpal/dconf.nix
           ./vorpal/dconf-mod.nix
+        ];
+      };
+      "matt@choedankal" = home-manager.lib.homeManagerConfiguration { 
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        extraSpecialArgs = { inherit inputs; };
+        modules = [
+          ./home-manager/common.nix
+          ./home-manager/gnome-nice.nix
+          #./home-manager/gui.nix
+          ./choedankal/dconf.nix
+          #./choedankal/dconf-mod.nix
         ];
       };
       "nixos@nixos" = home-manager.lib.homeManagerConfiguration { 
