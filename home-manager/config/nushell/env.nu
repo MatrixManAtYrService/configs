@@ -74,5 +74,12 @@ $env.NU_PLUGIN_DIRS = [
     ($nu.default-config-dir | path join 'plugins') # add <nushell-config-dir>/plugins
 ]
 
-# To add entries to PATH (on Windows you might use Path), you can use the following pattern:
-# $env.PATH = ($env.PATH | split row (char esep) | prepend '/some/path')
+$env.PATH = ($env.PATH | split row (char esep) | append '/some/path')
+$env.PATH = ($env.PATH | split row (char esep) | prepend ($env.HOME + '/.bin'))
+
+# `today` goes to a new directory just for today
+$env.TODAYDIR = (date now | format date "%Y/%m/%d" | prepend $env.HOME | str join '/')
+alias today = echo foo # cd $env.TODAYDIR
+
+
+
