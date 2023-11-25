@@ -69,6 +69,11 @@
       enableNushellIntegration = true;
     };
 
+    zoxide = {
+      enable = true;
+      enableNushellIntegration = true;
+    };
+
     git = {
       enable = true;
       userName = "Matt Rixman";
