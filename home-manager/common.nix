@@ -1,24 +1,7 @@
 { inputs, lib, config, pkgs, ... }: {
 
-  nixpkgs = {
-    config = {
-      allowUnfree = true;
-      # Workaround for https://github.com/nix-community/home-manager/issues/2942
-      allowUnfreePredicate = (_: true);
-    };
-    overlays = [
-      (final: previous: {
-        helix = inputs.helix.packages.${final.system}.helix;
-      })
-    ];
-  };
-
- 
-
   home = with pkgs; {
     stateVersion = "23.05";
-    username = "matt";
-    homeDirectory = "/home/matt";
     packages = [
       silver-searcher
       jq
@@ -46,12 +29,15 @@
         recursive = true;
         target = ".config/nushell";
       };
+      "zoxide-config" = {
+        source = ./config/zoxide;
+        recursive = true;
+        target = ".config/zoxide";
+      };
     };
   };
 
   programs = {
-
-    home-manager.enable = true;
 
     nushell = {
       enable = true;
@@ -69,10 +55,11 @@
       enableNushellIntegration = true;
     };
 
-    zoxide = {
-      enable = true;
-      enableNushellIntegration = true;
-    };
+    # enable after: 
+    #zoxide = {
+      #enable = true;
+      #enableNushellIntegration = true;
+    #};
 
     git = {
       enable = true;
@@ -84,6 +71,7 @@
         };
       };
     };
+
     helix = {
       enable = true;
       settings = {
@@ -95,11 +83,11 @@
           cursor-shape.insert = "bar";
         };
         keys = {
-            normal = {
-              esc = ["collapse_selection" "keep_primary_selection"];
-              "C-j" = ["extend_to_line_bounds" "delete_selection" "paste_after"]; 
-              "C-k" = ["extend_to_line_bounds" "delete_selection" "move_line_up" "paste_before"]; 
-            };
+          normal = {
+            esc = ["collapse_selection" "keep_primary_selection"];
+            "C-j" = ["extend_to_line_bounds" "delete_selection" "paste_after"]; 
+            "C-k" = ["extend_to_line_bounds" "delete_selection" "move_line_up" "paste_before"]; 
+          };
         };
       };
     };

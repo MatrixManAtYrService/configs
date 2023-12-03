@@ -74,8 +74,7 @@ $env.NU_PLUGIN_DIRS = [
     ($nu.default-config-dir | path join 'plugins') # add <nushell-config-dir>/plugins
 ]
 
-$env.PATH = ($env.PATH | split row (char esep) | append '/some/path')
-$env.PATH = ($env.PATH | split row (char esep) | prepend ($env.HOME + '/.bin'))
+$env.PATH = ($env.PATH | split row (char esep) | prepend ($env.HOME + '/.bin') | append '/Users/matt/.nix-profile/bin' | append '/etc/profiles/per-user/matt/bin' | append '/run/current-system/sw/bin' | append '/nix/var/nix/profiles/default/bin')
 
 # `today` goes to a new directory just for today
 $env.TODAYDIR = (date now | format date "%Y/%m/%d" | prepend $env.HOME | str join '/')
