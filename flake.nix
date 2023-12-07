@@ -42,9 +42,15 @@
         modules = [
           ./ligo/configuration.nix
           home-manager.darwinModules.home-manager {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.matt = import ./home-manager/common.nix;
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+
+              users.matt = import ./home-manager/common.nix;
+              sharedModules = [
+                ./home-manager/work.nix
+              ];
+            };
           }
         ];
         specialArgs = { inherit inputs; inherit self; };

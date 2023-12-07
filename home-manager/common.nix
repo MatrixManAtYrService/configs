@@ -8,6 +8,7 @@
       gron
       nodePackages_latest.bash-language-server
       nodePackages_latest.yaml-language-server
+      dockerfile-language-server-nodejs
       nil
       wget
       tree
