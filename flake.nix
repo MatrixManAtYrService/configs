@@ -48,7 +48,7 @@
 
               users.matt = import ./home-manager/common.nix;
               sharedModules = [
-                ./home-manager/work.nix
+                ./home-manager/astronomer.nix
               ];
             };
           }

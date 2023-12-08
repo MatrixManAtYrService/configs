@@ -14,6 +14,7 @@
       tree
       marksman
       fzf
+      nix-direnv
     ];
 
     file = {

@@ -198,7 +198,7 @@ $env.config = {
     history: {
         max_size: 100_000 # Session has to be reloaded for this to take effect
         sync_on_enter: true # Enable to share history between multiple sessions, else you have to close the session to write history to file
-        file_format: "plaintext" # "sqlite" or "plaintext"
+        file_format: "sqlite" # "sqlite" or "plaintext"
         isolation: false # only available with sqlite file_format. true enables history isolation, false disables it. true will allow the history to be isolated to the current session using up/down arrows. false will allow the history to be shared across all sessions.
     }
 
@@ -773,11 +773,34 @@ $env.config = {
               cmd: "commandline (
                      [
                        (commandline)
-                       (fzf --height=40% | decode utf-8 | str trim)
+                       (fzf --height=40% --layout=revese | decode utf-8 | str trim)
                      ] | str join
               )"
             }
           ]
+        }
+        {
+          name: change_dir_with_fzf
+          modifier: control
+          keycode: char_y
+          mode: [emacs, vi_normal, vi_insert]
+          event: {
+            send: ExecuteHostCommand,
+            cmd: "cd ( history
+                         | sort-by start_timestamp
+                         | reverse
+                         | get cwd
+                         | uniq
+                         | where $it =~ $env.HOME
+                         | str replace $env.HOME '~'
+                         | where $it != '~'
+                         | first 150
+                         | str join \"\\n\"
+                         | fzf --height=40% --layout=reverse
+                         | decode utf-8
+                         | str trim
+                    )"
+          }
         }
     ]
 }
