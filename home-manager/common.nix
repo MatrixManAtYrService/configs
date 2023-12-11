@@ -57,6 +57,13 @@
       enableNushellIntegration = true;
     };
 
+    direnv = {
+      enable = true;
+      enableNushellIntegration = true; # see note on other shells below
+      nix-direnv.enable = true;
+    };
+
+
     # enable after: 
     #zoxide = {
       #enable = true;
@@ -77,7 +84,7 @@
     helix = {
       enable = true;
       settings = {
-        theme = "tokyonight_storm";
+        theme = "gruvbox";
         editor = {
           line-number = "relative";
           mouse = false;
@@ -86,7 +93,7 @@
         };
         keys = {
           normal = {
-            esc = ["collapse_selection" "keep_primary_selection"];
+            #esc = ["collapse_selection" "keep_primary_selection"];
             "C-j" = ["extend_to_line_bounds" "delete_selection" "paste_after"]; 
             "C-k" = ["extend_to_line_bounds" "delete_selection" "move_line_up" "paste_before"]; 
           };
