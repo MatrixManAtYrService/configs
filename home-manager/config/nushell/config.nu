@@ -773,7 +773,7 @@ $env.config = {
               cmd: "commandline (
                      [
                        (commandline)
-                       (fzf --height=40% --layout=revese | decode utf-8 | str trim)
+                       (fzf --height=40% --layout=reverse | decode utf-8 | str trim)
                      ] | str join
               )"
             }
