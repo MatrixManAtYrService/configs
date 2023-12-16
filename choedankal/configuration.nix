@@ -1,17 +1,46 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ config, pkgs, ... }:
-
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+  inputs,
+  lib,
+  config,
+  pkgs,
+  ...
+}: {
+
+  imports = [
+    ./hardware-configuration.nix
+  ];
+
+  nixpkgs = {
+    overlays = [
+    ];
+    config = {
+      allowUnfree = true;
+    };
+  };
+
+  # This will add each flake input as a registry
+  # To make nix3 commands consistent with your flake
+  nix.registry = (lib.mapAttrs (_: flake: {inherit flake;})) ((lib.filterAttrs (_: lib.isType "flake")) inputs);
+
+  # This will additionally add your inputs to the system's legacy channels
+  # Making legacy nix commands consistent as well, awesome!
+  nix.nixPath = ["/etc/nix/path"];
+  environment.etc =
+    lib.mapAttrs'
+    (name: value: {
+      name = "nix/path/${name}";
+      value.source = value.flake;
+    })
+    config.nix.registry;
+
+  nix.settings = {
+    experimental-features = "nix-command flakes";
+    auto-optimise-store = true;
+    trusted-substituters = [
+    "https://devenv.cachix.org;"
     ];
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
+  };
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -19,19 +48,11 @@
 
   boot.initrd.luks.devices."luks-afbd4a66-373a-4369-ae30-c024d639f7b1".device = "/dev/disk/by-uuid/afbd4a66-373a-4369-ae30-c024d639f7b1";
   networking.hostName = "ChoedanKal"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Enable networking
   networking.networkmanager.enable = true;
 
-  # Set your time zone.
   time.timeZone = "America/Denver";
 
-  # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 
   i18n.extraLocaleSettings = {
@@ -46,7 +67,6 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  # Enable the X11 windowing system.
   services.xserver.enable = true;
 
   # Enable the GNOME Desktop Environment.
@@ -95,8 +115,6 @@
     shell = pkgs.nushell;
   };
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -115,7 +133,7 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

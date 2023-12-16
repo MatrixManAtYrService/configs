@@ -1,4 +1,4 @@
-{ inputs, lib, config, pkgs, ... }: {
+{ pkgs, ... }: {
 
   home = with pkgs; {
     stateVersion = "23.05";
@@ -59,7 +59,7 @@
 
     direnv = {
       enable = true;
-      enableNushellIntegration = true; # see note on other shells below
+      enableNushellIntegration = true;
       nix-direnv.enable = true;
     };
 
@@ -93,7 +93,6 @@
         };
         keys = {
           normal = {
-            #esc = ["collapse_selection" "keep_primary_selection"];
             "C-j" = ["extend_to_line_bounds" "delete_selection" "paste_after"]; 
             "C-k" = ["extend_to_line_bounds" "delete_selection" "move_line_up" "paste_before"]; 
           };
