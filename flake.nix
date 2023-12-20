@@ -50,6 +50,7 @@
               sharedModules = [
                 ./home-manager/astronomer.nix
                 ./home-manager/rust.nix
+                ./home-manager/python.nix
               ];
             };
           }
