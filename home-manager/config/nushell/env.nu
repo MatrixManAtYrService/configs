@@ -76,9 +76,7 @@ $env.NU_PLUGIN_DIRS = [
 
 $env.PATH = ($env.PATH | split row (char esep) | prepend ($env.HOME + '/.bin') | append '/Users/matt/.nix-profile/bin' | append '/etc/profiles/per-user/matt/bin' | append '/run/current-system/sw/bin' | append '/nix/var/nix/profiles/default/bin')
 
-# `today` goes to a new directory just for today
+# `today` and `yesterday` goes to a new directory just for that day
 $env.TODAYDIR = (date now | format date "%Y/%m/%d" | prepend $env.HOME | str join '/')
-alias today = echo foo # cd $env.TODAYDIR
-
-
+$env.YESTERDAYDIR = ((date now) - 1day | format date "%Y/%m/%d" | prepend $env.HOME | str join '/')
 

@@ -752,6 +752,7 @@ $env.config = {
               send: ExecuteHostCommand
               cmd: "commandline (
                 history
+                  | where exit_status == 0
                   | each { |it| $it.command }
                   | uniq
                   | str join (char -i 0)
@@ -809,6 +810,7 @@ $env.config = {
           event: {
             send: ExecuteHostCommand,
             cmd: "cd ( history
+                         | where cwd !~ '.*[0-9]{4}/[0-9]{2}/[0-9]{2}'
                          | sort-by start_timestamp
                          | reverse
                          | get cwd
@@ -830,4 +832,9 @@ $env.config = {
 def --env today []: nothing -> nothing {
     mkdir $env.TODAYDIR
     cd $env.TODAYDIR
+}
+
+def --env yesterday []: nothing -> nothing {
+    mkdir $env.YESTERDAYDIR
+    cd $env.YESTERDAYDIR
 }
