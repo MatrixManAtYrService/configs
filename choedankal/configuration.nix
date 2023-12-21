@@ -106,7 +106,7 @@
   users.users.matt = {
     isNormalUser = true;
     description = "Matt Rixman";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "adbusers" "docker"];
     packages = with pkgs; [
       firefox
       nushell
@@ -115,12 +115,18 @@
     shell = pkgs.nushell;
   };
 
+  virtualisation.docker.enable = true;
+
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     gnomeExtensions.pop-shell
   ];
+
+  programs = {
+    adb.enable = true;
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

@@ -2,7 +2,11 @@
 
   home = with pkgs; {
     packages = [
-      # rust  # breaks when you uncomment this
+      clippy
+      rustc
+      cargo
+      rustfmt
+      rust-analyzer
     ];
   };
 }

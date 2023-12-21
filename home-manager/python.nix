@@ -4,8 +4,8 @@
     py-dev-env =  pkgs.python311.withPackages(ps: with ps; [
       python-lsp-server
       python-lsp-ruff
-      #pylsp-rope
-      #pudb
+      pylsp-rope
+      pudb
     ]);
   in {
     
@@ -23,11 +23,6 @@
     helix = {
       enable = true;
       languages = {
-        #language-server.pylsp-ruff = {
-        language-server.pylsp = {
-          command = "pylsp";
-          args = ["-v" "--log-file" "/Users/matt/pylsp.log"];
-        };
         language = [
           {
             name = "python";

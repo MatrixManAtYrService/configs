@@ -2,6 +2,8 @@
 
   home.packages = with pkgs; [
       wezterm
+      brave
+      _1password-gui
     ];
   home.file = {
     ".config/wezterm/wezterm.lua".text = ''
