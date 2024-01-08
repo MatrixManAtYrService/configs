@@ -15,6 +15,7 @@
       marksman
       fzf
       nix-direnv
+      asciinema
     ];
 
     file = {

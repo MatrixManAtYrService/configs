@@ -753,10 +753,11 @@ $env.config = {
               cmd: "commandline (
                 history
                   | where exit_status == 0
-                  | each { |it| $it.command }
+                  | get command
                   | uniq
+                  | reverse
                   | str join (char -i 0)
-                  | fzf --read0 --layout=reverse --height=40% -q (commandline)
+                  | fzf --no-sort --read0 --layout=reverse --height=40% -q (commandline)
                   | decode utf-8
                   | str trim
               )"
