@@ -197,7 +197,7 @@ $env.config = {
 
     history: {
         max_size: 100_000 # Session has to be reloaded for this to take effect
-        sync_on_enter: true # Enable to share history between multiple sessions, else you have to close the session to write history to file
+        sync_on_enter: false # Enable to share history between multiple sessions, else you have to close the session to write history to file
         file_format: "sqlite" # "sqlite" or "plaintext"
         isolation: false # only available with sqlite file_format. true enables history isolation, false disables it. true will allow the history to be isolated to the current session using up/down arrows. false will allow the history to be shared across all sessions.
     }
@@ -757,7 +757,7 @@ $env.config = {
                   | uniq
                   | reverse
                   | str join (char -i 0)
-                  | fzf --no-sort --read0 --layout=reverse --height=40% -q (commandline)
+                  | fzf --scheme=history --read0 --layout=reverse --height=40% -q (commandline)
                   | decode utf-8
                   | str trim
               )"

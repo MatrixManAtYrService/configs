@@ -9,6 +9,7 @@
       nodePackages_latest.bash-language-server
       nodePackages_latest.yaml-language-server
       dockerfile-language-server-nodejs
+      marksman
       nil
       wget
       tree

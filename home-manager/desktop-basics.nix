@@ -20,39 +20,6 @@
     config.color_scheme = 'Monokai (base16)'
     config.hide_mouse_cursor_when_typing = false
 
-    config.keys = {
-      {
-        key = 'j',
-        mods = 'CTRL|SHIFT',
-        action = wezterm.action.ActivatePaneDirection 'Down',
-      },
-      {
-        key = 'k',
-        mods = 'CTRL|SHIFT',
-        action = wezterm.action.ActivatePaneDirection 'Up',
-      },
-      {
-        key = 'h',
-        mods = 'CTRL|SHIFT',
-        action = wezterm.action.ActivatePaneDirection 'Left',
-      },
-      {
-        key = 'l',
-        mods = 'CTRL|SHIFT',
-        action = wezterm.action.ActivatePaneDirection 'Right',
-      },
-      {
-        key = 'b',
-        mods = 'CTRL|SHIFT',
-        action = wezterm.action.RotatePanes 'CounterClockwise',
-      },
-      {
-        key = 'n',
-        mods = 'CTRL|SHIFT',
-        action = wezterm.action.RotatePanes 'Clockwise',
-      }
-    }
-
     config.hyperlink_rules = {
       -- Matches: a URL in parens: (URL)
       {
