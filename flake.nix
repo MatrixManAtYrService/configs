@@ -1,5 +1,5 @@
 {
-  description = "Your new nix config";
+  description = "Matts Minions";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -57,8 +57,29 @@
         ];
         specialArgs = { inherit inputs; inherit self; };
       };
+
+      LISA = nix-darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
+        modules = [
+          ./lisa/configuration.nix
+          home-manager.darwinModules.home-manager {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+
+              users.matt = import ./home-manager/common.nix;
+              #sharedModules = [
+              #  ./home-manager/astronomer.nix
+              #  ./home-manager/rust.nix
+              #  ./home-manager/python.nix
+              #];
+            };
+          }
+        ];
+        specialArgs = { inherit inputs; inherit self; };
+      };
     };
-    darwinPackages = self.darwinConfigurations."LIGO".pkgs;
+    darwinPackages = self.darwinConfigurations."LISA".pkgs;
 
     homeConfigurations = {
       "matt@vorpal" = home-manager.lib.homeManagerConfiguration {
