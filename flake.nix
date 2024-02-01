@@ -69,9 +69,10 @@
 
               users.matt = import ./home-manager/common.nix;
               sharedModules = [
+                ./home-manager/wezterm-config.nix
                 ./home-manager/astronomer.nix
+                ./home-manager/python.nix
               #  ./home-manager/rust.nix
-              #  ./home-manager/python.nix
               ];
             };
           }

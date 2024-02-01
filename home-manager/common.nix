@@ -33,17 +33,11 @@
         recursive = true;
         target = ".config/nushell";
       };
-      "zoxide-config" = {
-        source = ./config/zoxide;
-        recursive = true;
-        target = ".config/zoxide";
-      };
-      # todo: move this to somewhere where it won't be used in non-graphical cases
-      "wezterm-config" = {
-        source = ./config/wezterm/wezterm.lua;
-        recursive = true;
-        target = ".confdig/wezterm/wezterm.lua";
-      };
+      #"zoxide-config" = {
+      #  source = ./config/zoxide;
+      #  recursive = true;
+      #  target = ".config/zoxide";
+      #};
     };
   };
 
