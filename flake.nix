@@ -68,11 +68,11 @@
               useUserPackages = true;
 
               users.matt = import ./home-manager/common.nix;
-              #sharedModules = [
-              #  ./home-manager/astronomer.nix
+              sharedModules = [
+                ./home-manager/astronomer.nix
               #  ./home-manager/rust.nix
               #  ./home-manager/python.nix
-              #];
+              ];
             };
           }
         ];

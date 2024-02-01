@@ -19,6 +19,10 @@
   environment.systemPackages = [
   ];
 
+  networking = {
+    hostName = "LISA";
+  };
+
 
   programs.zsh.enable = true;
 
@@ -32,4 +36,10 @@
 
   security.pam.enableSudoTouchIdAuth = true;
 
+  homebrew = {
+    enable = true;
+    casks  = [
+      "wezterm"
+    ];
+  };
 }
