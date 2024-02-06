@@ -3,7 +3,7 @@
   let
     py-dev-env =  pkgs.python311.withPackages(ps: with ps; [
       python-lsp-server
-      python-lsp-ruff
+      ruff-lsp
       pylsp-rope
       pudb
     ]);
@@ -22,12 +22,24 @@
 
     helix = {
       enable = true;
+
       languages = {
+        language-server = {
+          "ruff-lsp" = {
+            command = "${pkgs.ruff-lsp}/bin/ruff-lsp";
+            args = [ ];
+          };
+          "pylsp" = {
+            command = "${pkgs.python311Packages.python-lsp-server}/bin/pylsp";
+            args = [ ];
+          };
+        };
         language = [
           {
             name = "python";
+            language-servers = [ "ruff-lsp" "pylsp" ];
             formatter = { 
-              command = "ruff-format"; 
+              command = "${pkgs.ruff}/bin/ruff-format"; 
             };
           }
         ];

@@ -1,17 +1,14 @@
-{ pkgs, ... }: 
+{ pkgs, ... }:
 let
-  weztermConfigScript = pkgs.writeShellScript "wezterm-config-script" ''
-    sed "s|@nushell@|${pkgs.nushell}|g" ${./config/wezterm/wezterm.lua} > $out
-  '';
+  weztermConfig = pkgs.substituteAll {
+    src = ./config/wezterm/wezterm.lua;
+    nushell = pkgs.nushell;
+  };
 
-  weztermConfig = pkgs.runCommand "wezterm-config" {} ''
-    sh ${weztermConfigScript} > $out
-  '';
 in {
   home.file."wezterm-config" = {
     source = weztermConfig;
     target = ".config/wezterm/wezterm.lua";
   };
 }
-
 

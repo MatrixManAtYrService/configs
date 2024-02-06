@@ -1,14 +1,23 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+let
+  nushellConfig = pkgs.substituteAll {
+    src = ./config/nushell/config.nu;
+    helixpath = "${pkgs.helix}/bin/hx";
+  };
+in
+{
 
   home = with pkgs; {
     stateVersion = "23.05";
     packages = [
       silver-searcher
       jq
+      yq-go
       gron
       nodePackages_latest.bash-language-server
       nodePackages_latest.yaml-language-server
       dockerfile-language-server-nodejs
+      vscode-langservers-extracted
       marksman
       nil
       wget
@@ -17,6 +26,7 @@
       fzf
       nix-direnv
       asciinema
+      nixpkgs-fmt
     ];
 
     file = {
@@ -29,9 +39,12 @@
         target = ".config/starship.toml";
       };
       "nushell-confg" = {
-        source = ./config/nushell;
-        recursive = true;
-        target = ".config/nushell";
+        source = nushellConfig;
+        target = ".config/nushell/config.nu";
+      };
+      "nushell-env" = {
+        source = ./config/nushell/env.nu;
+        target = ".config/nushell/env.nu";
       };
       #"zoxide-config" = {
       #  source = ./config/zoxide;
@@ -68,8 +81,8 @@
 
     # enable after: 
     #zoxide = {
-      #enable = true;
-      #enableNushellIntegration = true;
+    #enable = true;
+    #enableNushellIntegration = true;
     #};
 
     git = {
@@ -95,8 +108,8 @@
         };
         keys = {
           normal = {
-            "C-j" = ["extend_to_line_bounds" "delete_selection" "paste_after"]; 
-            "C-k" = ["extend_to_line_bounds" "delete_selection" "move_line_up" "paste_before"]; 
+            "C-j" = [ "extend_to_line_bounds" "delete_selection" "paste_after" ];
+            "C-k" = [ "extend_to_line_bounds" "delete_selection" "move_line_up" "paste_before" ];
           };
         };
       };

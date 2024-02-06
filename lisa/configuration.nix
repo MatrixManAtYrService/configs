@@ -1,4 +1,4 @@
-{ pkgs, lib, self, ... }:
+{ pkgs, self, ... }:
 {
 
   nix = {
@@ -14,6 +14,7 @@
   system = {
     stateVersion = 4;
     configurationRevision = self.rev or self.dirtyRev or null;
+    defaults.trackpad.Clicking = true;
   };
 
   environment.systemPackages = [
@@ -40,6 +41,11 @@
     enable = true;
     casks  = [
       "wezterm"
+      "brave-browser"
+      "arc"
+      "visual-studio-code"
+      "docker"
+      "rectangle"
     ];
   };
 
