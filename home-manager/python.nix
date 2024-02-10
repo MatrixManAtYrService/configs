@@ -33,11 +33,15 @@
             command = "${pkgs.python311Packages.python-lsp-server}/bin/pylsp";
             args = [ ];
           };
+          "pylsp-mypy" = {
+            command = "${pkgs.python311Packages.pylsp-mypy}";
+            args = [ ];
+          };
         };
         language = [
           {
             name = "python";
-            language-servers = [ "ruff-lsp" "pylsp" ];
+            language-servers = [ "ruff-lsp" "pylsp" "pylsp-mypy"];
             formatter = { 
               command = "${pkgs.ruff}/bin/ruff-format"; 
             };

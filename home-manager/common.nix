@@ -27,6 +27,7 @@ in
       nix-direnv
       asciinema
       nixpkgs-fmt
+      bat
     ];
 
     file = {
@@ -90,6 +91,7 @@ in
       userName = "Matt Rixman";
       userEmail = "MatrixManAtYrService@users.noreply.github.com";
       extraConfig = {
+        "url \"git@github.com:\"".insteadOf = "https://github.com/";
         core = {
           editor = "hx";
         };

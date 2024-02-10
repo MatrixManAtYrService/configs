@@ -46,6 +46,7 @@
       "visual-studio-code"
       "docker"
       "rectangle"
+      "gimp"
     ];
   };
 
