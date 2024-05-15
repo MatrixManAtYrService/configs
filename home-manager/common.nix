@@ -29,6 +29,7 @@ in
       nixpkgs-fmt
       bat
       tmux
+      zsh
     ];
 
     file = {
@@ -40,14 +41,14 @@ in
         source = ./config/starship.toml;
         target = ".config/starship.toml";
       };
-      "nushell-confg" = {
-        source = nushellConfig;
-        target = ".config/nushell/config.nu";
-      };
-      "nushell-env" = {
-        source = ./config/nushell/env.nu;
-        target = ".config/nushell/env.nu";
-      };
+      # "nushell-confg" = {
+      #   source = nushellConfig;
+      #   target = ".config/nushell/config.nu";
+      # };
+      # "nushell-env" = {
+      #   source = ./config/nushell/env.nu;
+      #   target = ".config/nushell/env.nu";
+      # };
       #"zoxide-config" = {
       #  source = ./config/zoxide;
       #  recursive = true;

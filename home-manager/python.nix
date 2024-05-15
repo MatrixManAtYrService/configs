@@ -1,4 +1,4 @@
-{ inputs, lib, config, pkgs, ... }: 
+{ pkgs, ... }: 
 
   let
     py-dev-env =  pkgs.python311.withPackages(ps: with ps; [
@@ -6,6 +6,7 @@
       ruff-lsp
       pylsp-rope
       pudb
+      ipython
     ]);
   in {
     
@@ -18,6 +19,12 @@
       py-dev-env
       ruff
     ];
+
+
+  file.".ipython/profile_default/ipython_config.py".text = 
+    ''
+    c.TerminalInteractiveShell.editing_mode = 'vi'
+    '';
   };
 
   programs = {
@@ -39,7 +46,7 @@
         language = [
           {
             name = "python";
-            language-servers = [ "ruff-lsp" "pylsp" "pylsp-mypy"];
+            language-servers = [ "ruff-lsp" "pylsp"];
             formatter = { 
               command = "${pkgs.ruff}/bin/ruff-format"; 
             };

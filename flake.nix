@@ -99,6 +99,7 @@
         modules = [
           ./home-manager/linux-home.nix
           ./home-manager/common.nix
+          ./home-manager/astronomer.nix
           ./home-manager/python.nix
           ./home-manager/rust.nix
           ./home-manager/android-dev.nix

@@ -3,6 +3,7 @@
   home = with pkgs; {
     stateVersion = "23.05";
     packages = [
+      slack
       kind
       gnumake
       docker

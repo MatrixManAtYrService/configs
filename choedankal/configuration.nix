@@ -75,12 +75,13 @@
 
   # Configure keymap in X11
   services.xserver = {
-    layout = "us";
-    xkbVariant = "";
+    xkb.layout = "us";
+    xkb.variant = "";
   };
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
+  services.printing.drivers = [ pkgs.brlaser ];
 
   # Enable sound with pipewire.
   sound.enable = true;
