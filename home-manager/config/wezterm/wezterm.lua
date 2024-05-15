@@ -6,6 +6,8 @@ if wezterm.config_builder then
 end
 
 config.color_scheme = 'Gruvbox Dark (Gogh)'
+
+
 config.default_prog = { '@nushell@/bin/nu' }
 
 return config

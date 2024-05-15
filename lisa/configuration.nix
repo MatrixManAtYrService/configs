@@ -47,6 +47,7 @@
       "docker"
       "rectangle"
       "gimp"
+      "orbstack"
     ];
   };
 

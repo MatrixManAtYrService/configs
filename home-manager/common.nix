@@ -28,6 +28,7 @@ in
       asciinema
       nixpkgs-fmt
       bat
+      tmux
     ];
 
     file = {
@@ -61,11 +62,6 @@ in
       enable = true;
       configFile.source = ./config/nushell/config.nu;
       envFile.source = ./config/nushell/env.nu;
-    };
-
-    carapace = {
-      enable = true;
-      enableNushellIntegration = true;
     };
 
     starship = {

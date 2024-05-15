@@ -13,6 +13,8 @@
   home = with pkgs; {
     stateVersion = "23.05";
     packages = [
+      python311Packages.ipython
+      poetry
       py-dev-env
       ruff
     ];
@@ -31,10 +33,6 @@
           };
           "pylsp" = {
             command = "${pkgs.python311Packages.python-lsp-server}/bin/pylsp";
-            args = [ ];
-          };
-          "pylsp-mypy" = {
-            command = "${pkgs.python311Packages.pylsp-mypy}";
             args = [ ];
           };
         };

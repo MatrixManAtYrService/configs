@@ -7,8 +7,6 @@
       gnumake
       docker
       docker-compose
-      sops
-      go-swag
     ];
   };
 
