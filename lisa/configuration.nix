@@ -9,7 +9,10 @@
     '';
   };
 
-  nixpkgs.system = "aarch64-darwin";
+  nixpkgs = {
+    system = "aarch64-darwin";
+    config.allowUnfree = true;
+  };
 
   system = {
     stateVersion = 4;
