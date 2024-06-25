@@ -105,6 +105,7 @@
           ./home-manager/android-dev.nix
           ./home-manager/gnome-nice.nix
           ./home-manager/desktop-basics.nix
+          ./home-manager/wezterm-config.nix
           ./choedankal/dconf.nix
         ];
       };

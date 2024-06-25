@@ -47,6 +47,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   boot.initrd.luks.devices."luks-afbd4a66-373a-4369-ae30-c024d639f7b1".device = "/dev/disk/by-uuid/afbd4a66-373a-4369-ae30-c024d639f7b1";
+  boot.supportedFilesystems = ["ntfs"];
   networking.hostName = "ChoedanKal"; # Define your hostname.
 
   networking.networkmanager.enable = true;

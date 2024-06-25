@@ -30,6 +30,7 @@ in
       bat
       tmux
       zsh
+      zellij
     ];
 
     file = {

@@ -3,6 +3,7 @@ let
   weztermConfig = pkgs.substituteAll {
     src = ./config/wezterm/wezterm.lua;
     nushell = pkgs.nushell;
+    zellij = pkgs.zellij;
   };
 
 in {
