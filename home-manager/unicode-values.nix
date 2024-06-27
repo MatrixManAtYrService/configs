@@ -1,0 +1,33 @@
+{
+  ctrl_shift_left = { literal = ""; escape = "\\u{E000}"; };
+  ctrl_shift_right = { literal = ""; escape = "\\u{E001}"; };
+  ctrl_shift_up = { literal = ""; escape = "\\u{E002}"; };
+  ctrl_shift_down = { literal = ""; escape = "\\u{E003}"; };
+  ctrl_shift_minus = { literal = ""; escape = "\\u{E004}"; };
+  ctrl_shift_plus = { literal = ""; escape = "\\u{E005}"; };
+  ctrl_shift_p = { literal = ""; escape = "\\u{E006}"; };
+  ctrl_shift_h = { literal = ""; escape = "\\u{E007}"; };
+  ctrl_shift_t = { literal = ""; escape = "\\u{E008}"; };
+  ctrl_shift_s = { literal = ""; escape = "\\u{E009}"; };
+  ctrl_shift_c = { literal = ""; escape = "\\u{E00A}"; };
+  ctrl_shift_f = { literal = ""; escape = "\\u{E00B}"; };
+  ctrl_shift_b = { literal = ""; escape = "\\u{E00C}"; };
+  ctrl_shift_o = { literal = ""; escape = "\\u{E00D}"; };
+  ctrl_shift_q = { literal = ""; escape = "\\u{E00E}"; };
+  ctrl_shift_n = { literal = ""; escape = "\\u{E00F}"; };
+  alt_shift_n = { literal = ""; escape = "\\u{E010}"; };
+  alt_shift_i = { literal = ""; escape = "\\u{E011}"; };
+  alt_shift_o = { literal = ""; escape = "\\u{E012}"; };
+  alt_shift_h = { literal = ""; escape = "\\u{E013}"; };
+  alt_shift_l = { literal = ""; escape = "\\u{E01E}"; };
+  alt_shift_left = { literal = ""; escape = "\\u{E014}"; };
+  alt_shift_right = { literal = ""; escape = "\\u{E015}"; };
+  alt_shift_j = { literal = ""; escape = "\\u{E016}"; };
+  alt_shift_down = { literal = ""; escape = "\\u{E017}"; };
+  alt_shift_k = { literal = ""; escape = "\\u{E018}"; };
+  alt_shift_up = { literal = ""; escape = "\\u{E019}"; };
+  alt_shift_plus = { literal = ""; escape = "\\u{E01A}"; };
+  alt_shift_minus = { literal = ""; escape = "\\u{E01B}"; };
+  alt_shift_bracket_left = { literal = ""; escape = "\\u{E01C}"; };
+  alt_shift_bracket_right = { literal = ""; escape = "\\u{E01D}"; };
+}
