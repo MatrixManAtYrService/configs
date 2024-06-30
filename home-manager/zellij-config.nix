@@ -18,7 +18,7 @@ let
     ctrl_shift_b = unicodeValues.ctrl_shift_b.literal;
     ctrl_shift_o = unicodeValues.ctrl_shift_o.literal;
     ctrl_shift_q = unicodeValues.ctrl_shift_q.literal;
-    ctrl_shift_n = unicodeValues.ctrl_shift_n.literal;
+    ctrl_shift_r = unicodeValues.ctrl_shift_r.literal;
     alt_shift_n = unicodeValues.alt_shift_n.literal;
     alt_shift_i = unicodeValues.alt_shift_i.literal;
     alt_shift_o = unicodeValues.alt_shift_o.literal;

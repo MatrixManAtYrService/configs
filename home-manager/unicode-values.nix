@@ -14,7 +14,7 @@
   ctrl_shift_b = { literal = ""; escape = "\\u{E00C}"; };
   ctrl_shift_o = { literal = ""; escape = "\\u{E00D}"; };
   ctrl_shift_q = { literal = ""; escape = "\\u{E00E}"; };
-  ctrl_shift_n = { literal = ""; escape = "\\u{E00F}"; };
+  ctrl_shift_r = { literal = ""; escape = "\\u{E00F}"; };
   alt_shift_n = { literal = ""; escape = "\\u{E010}"; };
   alt_shift_i = { literal = ""; escape = "\\u{E011}"; };
   alt_shift_o = { literal = ""; escape = "\\u{E012}"; };

@@ -107,6 +107,7 @@
           ./home-manager/gnome-nice.nix
           ./home-manager/desktop-basics.nix
           ./home-manager/wezterm-config.nix
+          ./home-manager/zellij-config.nix
           ./choedankal/dconf.nix
         ];
       };

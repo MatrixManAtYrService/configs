@@ -20,7 +20,7 @@ let
     ctrl_shift_b = unicodeValues.ctrl_shift_b.escape;
     ctrl_shift_o = unicodeValues.ctrl_shift_o.escape;
     ctrl_shift_q = unicodeValues.ctrl_shift_q.escape;
-    ctrl_shift_n = unicodeValues.ctrl_shift_n.escape;
+    ctrl_shift_r = unicodeValues.ctrl_shift_r.escape;
     alt_shift_n = unicodeValues.alt_shift_n.escape;
     alt_shift_i = unicodeValues.alt_shift_i.escape;
     alt_shift_o = unicodeValues.alt_shift_o.escape;

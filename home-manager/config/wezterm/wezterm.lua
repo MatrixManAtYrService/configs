@@ -29,7 +29,7 @@ config.keys = {
   {key="b", mods="CTRL|SHIFT", action=wezterm.action.SendString("@ctrl_shift_b@")},
   {key="o", mods="CTRL|SHIFT", action=wezterm.action.SendString("@ctrl_shift_o@")},
   {key="q", mods="CTRL|SHIFT", action=wezterm.action.SendString("@ctrl_shift_q@")},
-  {key="n", mods="CTRL|SHIFT", action=wezterm.action.SendString("@ctrl_shift_n@")},
+  {key="r", mods="CTRL|SHIFT", action=wezterm.action.SendString("@ctrl_shift_r@")},
   {key="n", mods="ALT|SHIFT", action=wezterm.action.SendString("@alt_shift_n@")},
   {key="i", mods="ALT|SHIFT", action=wezterm.action.SendString("@alt_shift_i@")},
   {key="o", mods="ALT|SHIFT", action=wezterm.action.SendString("@alt_shift_o@")},

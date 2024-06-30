@@ -8,7 +8,7 @@ keybinds clear-defaults=true {
         bind "@ctrl_shift_p@" { SwitchToMode "Normal"; }
     }
     resize {
-        bind "@ctrl_shift_n@" { SwitchToMode "Normal"; }
+        bind "@ctrl_shift_r@" { SwitchToMode "Normal"; }
         bind "h" "Left" { Resize "Increase Left"; }
         bind "j" "Down" { Resize "Increase Down"; }
         bind "k" "Up" { Resize "Increase Up"; }
@@ -166,7 +166,7 @@ keybinds clear-defaults=true {
         bind "@ctrl_shift_p@" { SwitchToMode "Pane"; }
     }
     shared_except "resize" "locked" {
-        bind "@ctrl_shift_n@" { SwitchToMode "Resize"; }
+        bind "@ctrl_shift_r@" { SwitchToMode "Resize"; }
     }
     shared_except "scroll" "locked" {
         bind "@ctrl_shift_s@" { SwitchToMode "Scroll"; }
