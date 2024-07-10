@@ -21,7 +21,7 @@ config.keys = {
   {key="-", mods="CTRL|SHIFT", action=wezterm.action.SendString("@ctrl_shift_minus@")},
   {key="=", mods="CTRL|SHIFT", action=wezterm.action.SendString("@ctrl_shift_plus@")},
   {key="p", mods="CTRL|SHIFT", action=wezterm.action.SendString("@ctrl_shift_p@")},
-  {key="h", mods="CTRL|SHIFT", action=wezterm.action.SendString("@ctrl_shift_h@")},
+  {key="m", mods="CTRL|SHIFT", action=wezterm.action.SendString("@ctrl_shift_m@")},
   {key="t", mods="CTRL|SHIFT", action=wezterm.action.SendString("@ctrl_shift_t@")},
   {key="s", mods="CTRL|SHIFT", action=wezterm.action.SendString("@ctrl_shift_s@")},
   {key="c", mods="CTRL|SHIFT", action=wezterm.action.SendString("@ctrl_shift_c@")},

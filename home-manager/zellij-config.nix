@@ -10,7 +10,7 @@ let
     ctrl_shift_minus = unicodeValues.ctrl_shift_minus.literal;
     ctrl_shift_plus = unicodeValues.ctrl_shift_plus.literal;
     ctrl_shift_p = unicodeValues.ctrl_shift_p.literal;
-    ctrl_shift_h = unicodeValues.ctrl_shift_h.literal;
+    ctrl_shift_m = unicodeValues.ctrl_shift_m.literal;
     ctrl_shift_t = unicodeValues.ctrl_shift_t.literal;
     ctrl_shift_s = unicodeValues.ctrl_shift_s.literal;
     ctrl_shift_c = unicodeValues.ctrl_shift_c.literal;

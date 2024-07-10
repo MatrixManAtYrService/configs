@@ -4,6 +4,7 @@
   home = with pkgs; {
     packages = [
       wl-clipboard
+      gimp
     ];
   };
 }

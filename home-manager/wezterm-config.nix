@@ -12,7 +12,7 @@ let
     ctrl_shift_minus = unicodeValues.ctrl_shift_minus.escape;
     ctrl_shift_plus = unicodeValues.ctrl_shift_plus.escape;
     ctrl_shift_p = unicodeValues.ctrl_shift_p.escape;
-    ctrl_shift_h = unicodeValues.ctrl_shift_h.escape;
+    ctrl_shift_m = unicodeValues.ctrl_shift_m.escape;
     ctrl_shift_t = unicodeValues.ctrl_shift_t.escape;
     ctrl_shift_s = unicodeValues.ctrl_shift_s.escape;
     ctrl_shift_c = unicodeValues.ctrl_shift_c.escape;

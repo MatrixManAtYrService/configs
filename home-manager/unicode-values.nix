@@ -6,7 +6,7 @@
   ctrl_shift_minus = { literal = ""; escape = "\\u{E004}"; };
   ctrl_shift_plus = { literal = ""; escape = "\\u{E005}"; };
   ctrl_shift_p = { literal = ""; escape = "\\u{E006}"; };
-  ctrl_shift_h = { literal = ""; escape = "\\u{E007}"; };
+  ctrl_shift_m = { literal = ""; escape = "\\u{E007}"; };
   ctrl_shift_t = { literal = ""; escape = "\\u{E008}"; };
   ctrl_shift_s = { literal = ""; escape = "\\u{E009}"; };
   ctrl_shift_c = { literal = ""; escape = "\\u{E00A}"; };
