@@ -232,6 +232,7 @@ $env.config = {
     buffer_editor: "hx"
     use_ansi_coloring: true
     bracketed_paste: true # enable bracketed paste, currently useless on windows
+    edit_mode: vi
     shell_integration: {
         # osc2 abbreviates the path if in the home_dir, sets the tab/window title, shows the running command in the tab/window title
         osc2: true
@@ -257,7 +258,7 @@ $env.config = {
         # 633;P;Cwd=<path> - Mark the current working directory and communicate it to the terminal
         # and also helps with the run recent menu in vscode
         osc633: true
-        # reset_application_mode is escape \x1b[?1l and was added to help ssh work better
+        # reset_application_t_ is escape \x1b[?1l and was added to help ssh work better
         reset_application_mode: true
     }
 
@@ -784,7 +785,7 @@ $env.config = {
                 | reverse
                 | uniq
                 | str join (char -i 0)
-                | fzf --scheme=history --read0 --tiebreak=chunk --layout=reverse --preview='echo {..}' --preview-window='bottom:3:wrap' --bind alt-up:preview-up,alt-down:preview-down --height=70% -q (commandline) --preview='echo -n {} | nu --stdin -c \'nu-highlight\''
+                | fzf --scheme=history --read0 --tiebreak=chunk --layout=reverse --preview='echo {..}' --preview-window='bottom:3:wrap' --bind alt-up:preview-up,alt-down:preview-down --height=70% -q (commandline) --preview='\'{}\' | nu --stdin -c \'nu-highlight\''
                 | decode utf-8
                 | str trim
             )"
