@@ -1,12 +1,12 @@
-{ inputs, lib, config, pkgs, ... }: {
-
-  home = with pkgs; {
-    packages = [
-      clippy
+{  pkgs, ... }: {
+  home = {
+    packages = with pkgs; [
       rustc
       cargo
-      rustfmt
-      rust-analyzer
     ];
+    file."cargo-config" = {
+        source = ./config/cargo.toml;
+        target = ".cargo/config.toml";
+      };
   };
 }

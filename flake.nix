@@ -7,15 +7,18 @@
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    helix.url = "github:helix-editor/helix?ref=23.10";
+    helix.url = "github:helix-editor/helix?ref=24.07";
+    nushell = {
+      url = "github:nushell/nushell?ref=0.99.1";
+      flake = false;
+    };
     nix-darwin = {
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, helix, nix-darwin }@inputs: {
-
+  outputs = { self, nixpkgs, home-manager, helix, nushell, nix-darwin }@inputs: {
     nixosConfigurations = {
 
       vorpal = nixpkgs.lib.nixosSystem {
@@ -41,7 +44,8 @@
         system = "x86_64-darwin";
         modules = [
           ./ligo/configuration.nix
-          home-manager.darwinModules.home-manager {
+          home-manager.darwinModules.home-manager
+          {
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
@@ -50,7 +54,7 @@
               sharedModules = [
                 ./home-manager/astronomer.nix
                 ./home-manager/rust.nix
-                ./home-manager/python.nix
+                ./home-manager/asdf.nix
               ];
             };
           }
@@ -62,18 +66,23 @@
         system = "aarch64-darwin";
         modules = [
           ./lisa/configuration.nix
-          home-manager.darwinModules.home-manager {
+          home-manager.darwinModules.home-manager
+          {
+
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
+              extraSpecialArgs = { inherit inputs; };
 
               users.matt = import ./home-manager/common.nix;
               sharedModules = [
+                #./home-manager/nushell-bleed.nix
                 ./home-manager/wezterm-config.nix
                 ./home-manager/zellij-config.nix
                 ./home-manager/astronomer.nix
                 ./home-manager/python.nix
-              #  ./home-manager/rust.nix
+                ./home-manager/rust.nix
+                ./home-manager/nixpkgs.nix
               ];
             };
           }
@@ -114,4 +123,3 @@
     };
   };
 }
-

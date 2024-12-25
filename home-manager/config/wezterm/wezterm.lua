@@ -7,11 +7,13 @@ end
 
 config.color_scheme = 'Gruvbox Dark (Gogh)'
 config.hide_tab_bar_if_only_one_tab = true
+config.send_composed_key_when_left_alt_is_pressed = false
+config.send_composed_key_when_right_alt_is_pressed = false
 
 config.set_environment_variables = {
   SHELL = '@nushell@/bin/nu'
 }
-config.default_prog = { '@zellij@/bin/zellij', '-l', 'compact'}
+config.default_prog = { '@zellij@/bin/zellij', '--debug', '-l', 'compact'}
 
 config.keys = {
   {key="LeftArrow", mods="CTRL|SHIFT", action=wezterm.action.SendString("@ctrl_shift_left@")},

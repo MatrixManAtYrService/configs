@@ -1,10 +1,4 @@
 { pkgs, ... }:
-let
-  nushellConfig = pkgs.substituteAll {
-    src = ./config/nushell/config.nu;
-    helixpath = "${pkgs.helix}/bin/hx";
-  };
-in
 {
 
   home = with pkgs; {

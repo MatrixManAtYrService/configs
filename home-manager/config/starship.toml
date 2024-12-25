@@ -7,6 +7,10 @@ $cmd_duration\
 $line_break\
 $character"""
 
+#[custom.dsnu_prompt]
+#command = '$env.DSNU_PROMPT_FUNC'
+#when = "nu -c 'not ($env | get DSNU_PROMPT_FUNC | is-empty)'"
+
 [directory]
 style = "blue"
 
