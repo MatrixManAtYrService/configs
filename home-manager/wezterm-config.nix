@@ -1,9 +1,11 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 let
   unicodeValues = import ./unicode-values.nix;
+  nushell = (import ./nushell.nix { inherit pkgs inputs; }).programs.nushell.package;
+
   weztermConfig = pkgs.substituteAll {
     src = ./config/wezterm/wezterm.lua;
-    nushell = pkgs.nushell;
+    nushell = nushell;
     zellij = pkgs.zellij;
     ctrl_shift_left = unicodeValues.ctrl_shift_left.escape;
     ctrl_shift_right = unicodeValues.ctrl_shift_right.escape;

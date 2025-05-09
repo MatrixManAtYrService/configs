@@ -1,4 +1,4 @@
-{ lib, pkgs, inputs, ... }:
+{ pkgs, inputs, ... }:
 
 let
   # Extract the Rust version from Nushell's `rust-toolchain.toml`
