@@ -19,8 +19,6 @@
       gron
       nil
       nim
-      nodePackages_latest.bash-language-server
-      nodePackages_latest.yaml-language-server
       wget
       tree
       wally-cli

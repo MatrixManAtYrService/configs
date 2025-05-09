@@ -6,8 +6,6 @@
       slack
       kind
       gnumake
-      docker
-      docker-compose
     ];
   };
 

@@ -45,24 +45,24 @@
     shell = pkgs.nushell;
   };
 
-  services.nix-daemon.enable = true;
-
-
-  security.pam.enableSudoTouchIdAuth = true;
-
   homebrew = {
     enable = true;
+    brews = [
+      "poetry"
+    ];
     casks = [
       "wezterm"
       "brave-browser"
       "arc"
       "visual-studio-code"
-      "docker"
       "rectangle"
       "gimp"
       "orbstack"
       "zed"
+      "cursor"
+      "inkscape"
+      "itsycal"
+      "claude"
     ];
   };
-
 }

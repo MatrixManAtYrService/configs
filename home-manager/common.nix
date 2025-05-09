@@ -1,9 +1,9 @@
 { pkgs, ... }:
 {
-
   home = with pkgs; {
     stateVersion = "23.05";
     packages = [
+      git
       silver-searcher
       jq
       yq-go
@@ -36,29 +36,13 @@
         source = ./config/starship.toml;
         target = ".config/starship.toml";
       };
-      # "nushell-confg" = {
-      #   source = nushellConfig;
-      #   target = ".config/nushell/config.nu";
-      # };
-      # "nushell-env" = {
-      #   source = ./config/nushell/env.nu;
-      #   target = ".config/nushell/env.nu";
-      # };
-      #"zoxide-config" = {
-      #  source = ./config/zoxide;
-      #  recursive = true;
-      #  target = ".config/zoxide";
-      #};
     };
   };
 
   programs = {
-
-    nushell = {
-      enable = true;
-      configFile.source = ./config/nushell/config.nu;
-      envFile.source = ./config/nushell/env.nu;
-    };
+    # nushell = import ./nushell.nix {
+    #   inherit lib pkgs inputs;
+    # };
 
     starship = {
       enable = true;

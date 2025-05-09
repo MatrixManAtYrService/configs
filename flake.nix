@@ -2,23 +2,31 @@
   description = "Matts Minions";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
     home-manager = {
-      url = "github:nix-community/home-manager/master";
+      url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     helix.url = "github:helix-editor/helix?ref=24.07";
     nushell = {
-      url = "github:nushell/nushell?ref=0.99.1";
+      url = "github:nushell/nushell?ref=0.104.0";
       flake = false;
     };
     nix-darwin = {
-      url = "github:LnL7/nix-darwin";
+      url = "github:LnL7/nix-darwin/nix-darwin-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+    rust-overlay = {
+      url = "github:oxalica/rust-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    crane = {
+      url = "github:ipetkov/crane";
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, helix, nushell, nix-darwin }@inputs: {
+  outputs = { self, nixpkgs, home-manager, helix, nushell, nix-darwin, rust-overlay, crane }@inputs: {
+
     nixosConfigurations = {
 
       vorpal = nixpkgs.lib.nixosSystem {
@@ -49,7 +57,6 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-
               users.matt = import ./home-manager/common.nix;
               sharedModules = [
                 ./home-manager/astronomer.nix
@@ -65,6 +72,15 @@
       LISA = nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin";
         modules = [
+          {
+            nixpkgs.overlays = [
+             (self: super: {
+                nodejs = super.nodejs_22;
+                nodejs-slim = super.nodejs-slim_22;
+             })
+            rust-overlay.overlays.default
+            ];
+          }
           ./lisa/configuration.nix
           home-manager.darwinModules.home-manager
           {
@@ -73,15 +89,17 @@
               useGlobalPkgs = true;
               useUserPackages = true;
               extraSpecialArgs = { inherit inputs; };
-
               users.matt = import ./home-manager/common.nix;
               sharedModules = [
-                #./home-manager/nushell-bleed.nix
+                ./home-manager/darwin-home.nix
+                ./home-manager/nushell.nix
                 ./home-manager/wezterm-config.nix
                 ./home-manager/zellij-config.nix
                 ./home-manager/astronomer.nix
                 ./home-manager/python.nix
+                ./home-manager/nodejs.nix
                 ./home-manager/rust.nix
+                ./home-manager/cross-compile.nix
                 ./home-manager/nixpkgs.nix
               ];
             };
